@@ -106,6 +106,7 @@ verticalSwiping | boolean | false | Changes swipe direction to vertical
 rtl | boolean | false | Change the slider's direction to become right-to-left
 waitForAnimate | boolean | true | Ignores requests to advance the slide while animating
 zIndex | number | 1000 | Set the zIndex values for slides, useful for IE9 and lower
+overlappingArrows | boolean | false | Resize the container if navigation arrows are placed above it
 
 ### Events
 

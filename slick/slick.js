@@ -86,7 +86,8 @@
                 vertical: false,
                 verticalSwiping: false,
                 waitForAnimate: true,
-                zIndex: 1000
+                zIndex: 1000,
+                overlappingArrows: false
             };
 
             _.initials = {
@@ -2404,15 +2405,39 @@
             true && _.slideCount > _.options.slidesToShow) {
             _.$prevArrow.removeClass('slick-disabled');
             _.$nextArrow.removeClass('slick-disabled');
+            if (_.options.overlappingArrows) {
+                _.$list.css({
+                    "margin-left": _.$prevArrow.outerWidth() + 'px',
+                    "margin-right": _.$nextArrow.outerWidth() + 'px'
+                });
+            }
             if (_.currentSlide === 0) {
                 _.$prevArrow.addClass('slick-disabled');
                 _.$nextArrow.removeClass('slick-disabled');
+
+                if (_.options.overlappingArrows) {
+                    _.$list.css({"margin-left": 0});
+                }
             } else if (_.currentSlide >= _.slideCount - _.options.slidesToShow && _.options.centerMode === false) {
                 _.$nextArrow.addClass('slick-disabled');
                 _.$prevArrow.removeClass('slick-disabled');
+
+                if (_.options.overlappingArrows) {
+                    _.$list.css({
+                        "margin-left": _.$prevArrow.outerWidth() + 'px',
+                        "margin-right": 0
+                    });
+                }
             } else if (_.currentSlide >= _.slideCount - 1 && _.options.centerMode === true) {
                 _.$nextArrow.addClass('slick-disabled');
                 _.$prevArrow.removeClass('slick-disabled');
+
+                if (_.options.overlappingArrows) {
+                    _.$list.css({
+                        "margin-left": 0,
+                        "margin-right": 0
+                    });
+                }
             }
         }
 
